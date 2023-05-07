@@ -1,36 +1,39 @@
 services:
 
-  duckdns:
-    image: lscr.io/linuxserver/duckdns:latest
-    container_name: duckdns
-    environment:
-      - PUID=1000 #optional
-      - PGID=1000 #optional
-      - TZ=Etc/UTC #optional
-      - SUBDOMAINS={dominio}
-      - TOKEN={tokendominio}
-      - LOG_FILE=false #optional
-    #volumes:
-    #  - /data/config:/config #optional
-    restart: unless-stopped
-    networks:
-      - projetoiot
+  # duckdns:
+  #   image: lscr.io/linuxserver/duckdns:latest
+  #   container_name: duckdns
+  #   environment:
+  #     - PUID=1000 #optional
+  #     - PGID=1000 #optional
+  #     - TZ=Etc/UTC #optional
+  #     - SUBDOMAINS={dominio}
+  #     - TOKEN={tokendominio}
+  #     - LOG_FILE=false #optional
+  #   #volumes:
+  #   #  - /data/config:/config #optional
+  #   restart: unless-stopped
+  #   networks:
+  #     - projetoiot
     
-
-
   node-red:
+    container_name: node_red
     image: nodered/node-red:latest
+    user: root
+    privileged:  true
     environment:
       - TZ=America/Sao_Paulo
     ports:
       - "1880:1880"
     networks:
       - projetoiot
+      - proxy_nginx
     volumes:
-      - /data/projetoiot/node-red/data:/data
+      - .//projetoiot/node-red/data:/data
+      #- ./settings.js:/data/settings.js
 
   mysql:
-    container_name: mysql
+    container_name: mysql_projeto
     image: mysql:8.0
     command:
       - mysqld
@@ -38,17 +41,32 @@ services:
     networks:
       - projetoiot
     ports:
-      - '3306:3306'
+      - '3308:3306'
     volumes:
-      - '/data/projetoiot/mysql:/var/lib/data' 
+      - './projetoiot/mysql:/var/lib/data' 
     environment:
-      - MYSQL_ROOT_PASSWORD=.
+      - MYSQL_ROOT_PASSWORD={senhabanco}
       - MYSQL_DATABASE={banco}
       - MYSQL_USER={usuariobanco}
       - MYSQL_PASSWORD={senhabanco}
-
+      - MYSQL_HOST=%
+  
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./projetoiot/mosquitto/config:/mosquitto/config
+      - ./projetoiot/mosquitto/data:/mosquitto/data
+      - ./projetoiot/mosquitto/log:/mosquitto/log
+    environment:
+      - MQTT_USERNAME={usuariobanco}
+      - MQTT_PASSWORD={senhabanco}
 
 networks:
   projetoiot:
-    driver: 
-        brigde
+    driver: bridge
+  proxy_nginx:
+    external: true
