@@ -19,6 +19,7 @@ services:
   node-red:
     container_name: node_red
     image: nodered/node-red:latest
+    restart: always
     user: root
     privileged:  true
     environment:
@@ -29,41 +30,55 @@ services:
       - projetoiot
       - proxy_nginx
     volumes:
-      - .//projetoiot/node-red/data:/data
+      - ./projetoiot/node-red/data:/data
       #- ./settings.js:/data/settings.js
 
-  mysql:
-    container_name: mysql_projeto
-    image: mysql:8.0
-    command:
-      - mysqld
-      - --default-authentication-plugin=mysql_native_password
+  pgsql_mqtt:
+    container_name: pgsql_mqtt
+    image: timescale/timescaledb:2.9.3-pg15
+    restart: always
+    ports:
+      - 5444:5432
+    environment:
+      - POSTGRES_USER=${usuariobanco}
+      - POSTGRES_PASSWORD=${senhabanco}
+      - LANG=en_US.utf8
+      - LANGUAGE=en_US.utf8
+      - LC_ALL=en_US.utf8
+      - LC_COLLATE=en_US.utf8
+      - LC_CTYPE=en_US.utf8
+      - TZ=GMT-3
     networks:
       - projetoiot
-    ports:
-      - '3308:3306'
     volumes:
-      - './projetoiot/mysql:/var/lib/data' 
-    environment:
-      - MYSQL_ROOT_PASSWORD={senhabanco}
-      - MYSQL_DATABASE={banco}
-      - MYSQL_USER={usuariobanco}
-      - MYSQL_PASSWORD={senhabanco}
-      - MYSQL_HOST=%
+      - ./projetoiot/postgres:/var/lib/postgresql/data
   
   mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto
+    restart: always
     ports:
       - 1883:1883
       - 9001:9001
     volumes:
-      - ./projetoiot/mosquitto/config:/mosquitto/config
-      - ./projetoiot/mosquitto/data:/mosquitto/data
+      - ./projetoiot/mosquitto/config/:/mosquitto/config
+      - ./projetoiot/mosquitto/data/:/mosquitto/data
       - ./projetoiot/mosquitto/log:/mosquitto/log
     environment:
-      - MQTT_USERNAME={usuariobanco}
-      - MQTT_PASSWORD={senhabanco}
+      - MQTT_USERNAME=${usuariobanco}
+      - MQTT_PASSWORD=${senhabanco}
+    networks:
+      - projetoiot
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
 
 networks:
   projetoiot:

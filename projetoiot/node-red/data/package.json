@@ -4,6 +4,14 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "node-red-dashboard": "~3.4.0"
+        "node-red-contrib-dashboard-bar-chart-data": "~0.9.93",
+        "node-red-contrib-dashboard-sum-bars": "~0.0.1",
+        "node-red-contrib-lf-nodes": "~1.0.0",
+        "node-red-contrib-pdf": "~0.1.0",
+        "node-red-contrib-postgresql": "~0.12.0",
+        "node-red-contrib-string": "~1.0.0",
+        "node-red-contrib-zabbix": "~1.0.2",
+        "node-red-dashboard": "~3.4.0",
+        "node-red-node-ui-table": "~0.4.3"
     }
 }

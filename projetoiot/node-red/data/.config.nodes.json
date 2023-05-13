@@ -654,5 +654,236 @@
                 "file": "/data/node_modules/node-red-dashboard/nodes/ui_spacer.js"
             }
         }
+    },
+    "node-red-contrib-dashboard-sum-bars": {
+        "name": "node-red-contrib-dashboard-sum-bars",
+        "version": "0.0.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "sum-bars": {
+                "name": "sum-bars",
+                "types": [
+                    "sum-bars"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-dashboard-sum-bars",
+                "file": "/data/node_modules/node-red-contrib-dashboard-sum-bars/sum-bars.js"
+            }
+        }
+    },
+    "node-red-contrib-lf-nodes": {
+        "name": "node-red-contrib-lf-nodes",
+        "version": "1.0.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "grafana": {
+                "name": "grafana",
+                "types": [
+                    "grafana"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/grafana/grafana.js"
+            },
+            "alarmList": {
+                "name": "alarmList",
+                "types": [
+                    "alarmList"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/alarmList/alarmList.js"
+            },
+            "addAlarm": {
+                "name": "addAlarm",
+                "types": [
+                    "addAlarm"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/addAlarm/addAlarm.js"
+            },
+            "updateAlarmStatus": {
+                "name": "updateAlarmStatus",
+                "types": [
+                    "updateAlarmStatus"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/updateAlarmStatus/updateAlarmStatus.js"
+            },
+            "sceneSwitch": {
+                "name": "sceneSwitch",
+                "types": [
+                    "sceneSwitch"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/sceneSwitch/sceneSwitch.js"
+            },
+            "visualNode": {
+                "name": "visualNode",
+                "types": [
+                    "visualNode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/visualNode/visualNode.js"
+            },
+            "interactiveNode": {
+                "name": "interactiveNode",
+                "types": [
+                    "interactiveNode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/interactiveNode/interactiveNode.js"
+            },
+            "configFrontend": {
+                "name": "configFrontend",
+                "types": [
+                    "configFrontend"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-lf-nodes",
+                "file": "/data/node_modules/node-red-contrib-lf-nodes/nodes/configFrontend/configFrontend.js"
+            }
+        }
+    },
+    "node-red-contrib-postgresql": {
+        "name": "node-red-contrib-postgresql",
+        "version": "0.12.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "postgresql": {
+                "name": "postgresql",
+                "types": [
+                    "postgreSQLConfig",
+                    "postgresql"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-postgresql",
+                "file": "/data/node_modules/node-red-contrib-postgresql/postgresql.js"
+            }
+        }
+    },
+    "node-red-contrib-dashboard-bar-chart-data": {
+        "name": "node-red-contrib-dashboard-bar-chart-data",
+        "version": "0.9.93",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "bar-chart-data": {
+                "name": "bar-chart-data",
+                "types": [
+                    "bar-chart-data"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-dashboard-bar-chart-data",
+                "file": "/data/node_modules/node-red-contrib-dashboard-bar-chart-data/bar-chart-data.js"
+            }
+        }
+    },
+    "node-red-node-ui-table": {
+        "name": "node-red-node-ui-table",
+        "version": "0.4.3",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "ui_table": {
+                "name": "ui_table",
+                "types": [
+                    "ui_table"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-node-ui-table",
+                "file": "/data/node_modules/node-red-node-ui-table/node.js"
+            }
+        }
+    },
+    "node-red-contrib-zabbix": {
+        "name": "node-red-contrib-zabbix",
+        "version": "1.0.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "zabbix": {
+                "name": "zabbix",
+                "types": [
+                    "zabbix",
+                    "zabbixNode"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-zabbix",
+                "file": "/data/node_modules/node-red-contrib-zabbix/zabbix.js"
+            }
+        }
+    },
+    "node-red-contrib-pdf": {
+        "name": "node-red-contrib-pdf",
+        "version": "0.1.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "pdf": {
+                "name": "pdf",
+                "types": [
+                    "HTML-PDF"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-pdf",
+                "file": "/data/node_modules/node-red-contrib-pdf/pdf.js"
+            }
+        }
+    },
+    "node-red-contrib-string": {
+        "name": "node-red-contrib-string",
+        "version": "1.0.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "string": {
+                "name": "string",
+                "types": [
+                    "string"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-string",
+                "file": "/data/node_modules/node-red-contrib-string/string/string.js"
+            }
+        }
     }
 }

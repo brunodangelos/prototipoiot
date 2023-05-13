@@ -8,9 +8,17 @@
         "env": []
     },
     {
+        "id": "47f0cdb8dff9a31e",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "59b87fe225053ad8",
         "type": "ui_group",
-        "name": "Inicio",
+        "name": "ESP32",
         "tab": "d2923da603c3b101",
         "order": 1,
         "disp": true,
@@ -21,7 +29,7 @@
     {
         "id": "d2923da603c3b101",
         "type": "ui_tab",
-        "name": "Home",
+        "name": "Dashboard IOT",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
@@ -30,7 +38,7 @@
         "id": "c90df2f4b6f2275e",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -42,7 +50,8 @@
                 "default": "#097479",
                 "baseColor": "#097479",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Untitled Theme 1",
@@ -52,44 +61,44 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
+                    "default": "#097479",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
                     "value": "#111111",
                     "edited": false
                 },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#097479",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "base-font": {
@@ -105,7 +114,7 @@
             }
         },
         "site": {
-            "name": "Node-RED Dashboard",
+            "name": "IOT com ESP32",
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
@@ -124,47 +133,264 @@
         }
     },
     {
-        "id": "15aa7fdbba6de9da",
-        "type": "ui_group",
-        "name": "Grafico",
-        "tab": "d2923da603c3b101",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
+        "id": "a3162002b2077c4a",
+        "type": "mqtt-broker",
+        "name": "srv-maike",
+        "broker": "8ddcd71cf9fa49d5826febdaa267290f.s2.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "825e51829e855e3d",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
-        "id": "a5ba19cf27836621",
-        "type": "ui_button",
+        "id": "825e51829e855e3d",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "mqtt.key",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "5eac19d116ec3450",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "pgsql_mqtt",
+        "hostFieldType": "str",
+        "port": "5432",
+        "portFieldType": "num",
+        "database": "postgres",
+        "databaseFieldType": "str",
+        "ssl": "true",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "iot",
+        "userFieldType": "str",
+        "password": "iot",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "de6e8069bcd90e5d",
+        "type": "mqtt out",
+        "z": "ac56580f02b26884",
+        "name": "IOT server new",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a3162002b2077c4a",
+        "x": 780,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "fec42b399b30ba63",
+        "type": "ui_switch",
         "z": "ac56580f02b26884",
         "name": "",
+        "label": "LED 1",
+        "tooltip": "",
         "group": "59b87fe225053ad8",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
-        "label": "button",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
+        "decouple": "true",
+        "topic": "esp32/led/1",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
         "className": "",
-        "icon": "help",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 390,
-        "y": 120,
+        "x": 570,
+        "y": 100,
         "wires": [
             [
-                "1cb0e2d4217c7562",
-                "966ed17ca0b18994"
+                "de6e8069bcd90e5d",
+                "b88c3f85db4962b8"
             ]
         ]
     },
     {
-        "id": "1cb0e2d4217c7562",
+        "id": "0e6cf60bd0df3218",
+        "type": "ui_switch",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "label": "LED 2",
+        "tooltip": "",
+        "group": "59b87fe225053ad8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "esp32/led/2",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 570,
+        "y": 160,
+        "wires": [
+            [
+                "de6e8069bcd90e5d",
+                "b88c3f85db4962b8"
+            ]
+        ]
+    },
+    {
+        "id": "86e8fb8fa76d0e38",
+        "type": "mqtt in",
+        "z": "ac56580f02b26884",
+        "name": "IOT Sub New",
+        "topic": "esp32/led/1",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a3162002b2077c4a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "fec42b399b30ba63"
+            ]
+        ]
+    },
+    {
+        "id": "f4a046c4cc9d0d6f",
+        "type": "mqtt in",
+        "z": "ac56580f02b26884",
+        "name": "IOT Sub New",
+        "topic": "esp32/led/2",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a3162002b2077c4a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "0e6cf60bd0df3218",
+                "d9342b404e629603"
+            ]
+        ]
+    },
+    {
+        "id": "b88c3f85db4962b8",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "ligado",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "desligado",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9342b404e629603",
+        "type": "csv",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "value",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "460b03438147b673"
+            ]
+        ]
+    },
+    {
+        "id": "cbf8465b432a7362",
         "type": "debug",
         "z": "ac56580f02b26884",
         "name": "debug 1",
@@ -175,115 +401,43 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 120,
+        "x": 860,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "a236a8c419bad4c1",
-        "type": "ui_date_picker",
-        "z": "ac56580f02b26884",
-        "name": "",
-        "label": "date",
-        "group": "59b87fe225053ad8",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 490,
-        "y": 280,
-        "wires": [
-            [
-                "1cb0e2d4217c7562"
-            ]
-        ]
-    },
-    {
-        "id": "b81f46d68426037e",
-        "type": "ui_form",
-        "z": "ac56580f02b26884",
-        "name": "",
-        "label": "",
-        "group": "59b87fe225053ad8",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "options": [
-            {
-                "label": "muito",
-                "value": "doido",
-                "type": "text",
-                "required": true,
-                "rows": null
-            }
-        ],
-        "formValue": {
-            "doido": ""
-        },
-        "payload": "",
-        "submit": "submit",
-        "cancel": "cancel",
-        "topic": "topic",
-        "topicType": "msg",
-        "splitLayout": "",
-        "className": "",
-        "x": 250,
-        "y": 220,
-        "wires": [
-            [
-                "a5ba19cf27836621",
-                "a236a8c419bad4c1"
-            ]
-        ]
-    },
-    {
-        "id": "05865cb291f3ec85",
-        "type": "ui_gauge",
-        "z": "ac56580f02b26884",
-        "name": "",
-        "group": "15aa7fdbba6de9da",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "gauge",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": 10,
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "5",
-        "seg2": "8",
-        "diff": false,
-        "className": "",
-        "x": 790,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "966ed17ca0b18994",
+        "id": "460b03438147b673",
         "type": "function",
         "z": "ac56580f02b26884",
-        "name": "a",
-        "func": "var contador = contador + 1;\nvar msg = contador;\nreturn msg;",
+        "name": "function 1",
+        "func": "var valor = msg.payload.value;\nvar sensor = \"led\"\n\nmsg.payload={}\nmsg.payload.valor = valor\nmsg.payload.sensor = sensor\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 200,
+        "x": 540,
+        "y": 340,
         "wires": [
             [
-                "05865cb291f3ec85"
+                "cbf8465b432a7362"
             ]
+        ]
+    },
+    {
+        "id": "735aa36a205ecbca",
+        "type": "postgresql",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "5eac19d116ec3450",
+        "split": true,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 710,
+        "y": 520,
+        "wires": [
+            []
         ]
     }
 ]
