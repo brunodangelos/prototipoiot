@@ -4,6 +4,8 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
+        "@flexdash/node-red-flexdash": "~0.4.154",
+        "node-red-contrib-alarm": "~1.4.0",
         "node-red-contrib-dashboard-bar-chart-data": "~0.9.93",
         "node-red-contrib-dashboard-sum-bars": "~0.0.1",
         "node-red-contrib-lf-nodes": "~1.0.0",

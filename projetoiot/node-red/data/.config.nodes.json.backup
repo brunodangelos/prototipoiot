@@ -866,5 +866,87 @@
                 "file": "/data/node_modules/node-red-contrib-pdf/pdf.js"
             }
         }
+    },
+    "node-red-contrib-string": {
+        "name": "node-red-contrib-string",
+        "version": "1.0.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "string": {
+                "name": "string",
+                "types": [
+                    "string"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-string",
+                "file": "/data/node_modules/node-red-contrib-string/string/string.js"
+            }
+        }
+    },
+    "node-red-contrib-alarm": {
+        "name": "node-red-contrib-alarm",
+        "version": "1.4.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "AnamicoAlarmPanel": {
+                "name": "AnamicoAlarmPanel",
+                "types": [
+                    "AnamicoAlarmPanel"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-alarm",
+                "file": "/data/node_modules/node-red-contrib-alarm/alarm/panel.js"
+            },
+            "AnamicoAlarmSensor": {
+                "name": "AnamicoAlarmSensor",
+                "types": [
+                    "AnamicoAlarmSensor"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-alarm",
+                "file": "/data/node_modules/node-red-contrib-alarm/alarm/sensor.js"
+            },
+            "AnamicoAlarmStateChanged": {
+                "name": "AnamicoAlarmStateChanged",
+                "types": [
+                    "AnamicoAlarmStateChanged"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-alarm",
+                "file": "/data/node_modules/node-red-contrib-alarm/alarm/stateChanged.js"
+            },
+            "AnamicoAlarmChangeState": {
+                "name": "AnamicoAlarmChangeState",
+                "types": [
+                    "AnamicoAlarmChangeState"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-alarm",
+                "file": "/data/node_modules/node-red-contrib-alarm/alarm/changeState.js"
+            },
+            "AnamicoAlarmTriggered": {
+                "name": "AnamicoAlarmTriggered",
+                "types": [
+                    "AnamicoAlarmTriggered"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-alarm",
+                "file": "/data/node_modules/node-red-contrib-alarm/alarm/triggered.js"
+            }
+        }
     }
 }

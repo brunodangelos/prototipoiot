@@ -182,9 +182,9 @@
         "hostFieldType": "str",
         "port": "5432",
         "portFieldType": "num",
-        "database": "postgres",
+        "database": "prototipoiot",
         "databaseFieldType": "str",
-        "ssl": "true",
+        "ssl": "false",
         "sslFieldType": "bool",
         "applicationName": "",
         "applicationNameType": "str",
@@ -200,6 +200,46 @@
         "passwordFieldType": "str"
     },
     {
+        "id": "ed0ae89afb1c029b",
+        "type": "ui_group",
+        "name": "Registros ESP32 LED1",
+        "tab": "d2923da603c3b101",
+        "order": 2,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b724311f20eddb12",
+        "type": "AnamicoAlarmPanel",
+        "d": true,
+        "name": "Status LED",
+        "contextStore": "memory"
+    },
+    {
+        "id": "f0389576cbd5fd02",
+        "type": "ui_group",
+        "name": "Registros ESP32 LED2",
+        "tab": "d2923da603c3b101",
+        "order": 4,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cc27dbf9f196f53a",
+        "type": "ui_group",
+        "name": "Legenda",
+        "tab": "d2923da603c3b101",
+        "order": 3,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "de6e8069bcd90e5d",
         "type": "mqtt out",
         "z": "ac56580f02b26884",
@@ -213,8 +253,8 @@
         "correl": "",
         "expiry": "",
         "broker": "a3162002b2077c4a",
-        "x": 780,
-        "y": 120,
+        "x": 700,
+        "y": 240,
         "wires": []
     },
     {
@@ -226,8 +266,8 @@
         "tooltip": "",
         "group": "59b87fe225053ad8",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": 5,
+        "height": 1,
         "passthru": false,
         "decouple": "true",
         "topic": "esp32/led/1",
@@ -243,12 +283,13 @@
         "offcolor": "",
         "animate": true,
         "className": "",
-        "x": 570,
-        "y": 100,
+        "x": 310,
+        "y": 180,
         "wires": [
             [
                 "de6e8069bcd90e5d",
-                "b88c3f85db4962b8"
+                "a356251d5ba40451",
+                "c91b754ce3a777c9"
             ]
         ]
     },
@@ -260,9 +301,9 @@
         "label": "LED 2",
         "tooltip": "",
         "group": "59b87fe225053ad8",
-        "order": 2,
-        "width": 0,
-        "height": 0,
+        "order": 3,
+        "width": 5,
+        "height": 1,
         "passthru": false,
         "decouple": "true",
         "topic": "esp32/led/2",
@@ -278,12 +319,13 @@
         "offcolor": "",
         "animate": true,
         "className": "",
-        "x": 570,
-        "y": 160,
+        "x": 310,
+        "y": 240,
         "wires": [
             [
                 "de6e8069bcd90e5d",
-                "b88c3f85db4962b8"
+                "a356251d5ba40451",
+                "fa3a9bfbd98c4b39"
             ]
         ]
     },
@@ -300,8 +342,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 150,
-        "y": 100,
+        "x": 90,
+        "y": 180,
         "wires": [
             [
                 "fec42b399b30ba63"
@@ -321,106 +363,11 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 150,
-        "y": 160,
+        "x": 90,
+        "y": 240,
         "wires": [
             [
-                "0e6cf60bd0df3218",
-                "d9342b404e629603"
-            ]
-        ]
-    },
-    {
-        "id": "b88c3f85db4962b8",
-        "type": "change",
-        "z": "ac56580f02b26884",
-        "name": "",
-        "rules": [
-            {
-                "t": "change",
-                "p": "payload",
-                "pt": "msg",
-                "from": "on",
-                "fromt": "str",
-                "to": "ligado",
-                "tot": "str"
-            },
-            {
-                "t": "change",
-                "p": "payload",
-                "pt": "msg",
-                "from": "off",
-                "fromt": "str",
-                "to": "desligado",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 800,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d9342b404e629603",
-        "type": "csv",
-        "z": "ac56580f02b26884",
-        "name": "",
-        "sep": ",",
-        "hdrin": "",
-        "hdrout": "none",
-        "multi": "one",
-        "ret": "\\n",
-        "temp": "value",
-        "skip": "0",
-        "strings": true,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 330,
-        "y": 340,
-        "wires": [
-            [
-                "460b03438147b673"
-            ]
-        ]
-    },
-    {
-        "id": "cbf8465b432a7362",
-        "type": "debug",
-        "z": "ac56580f02b26884",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 860,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "460b03438147b673",
-        "type": "function",
-        "z": "ac56580f02b26884",
-        "name": "function 1",
-        "func": "var valor = msg.payload.value;\nvar sensor = \"led\"\n\nmsg.payload={}\nmsg.payload.valor = valor\nmsg.payload.sensor = sensor\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 340,
-        "wires": [
-            [
-                "cbf8465b432a7362"
+                "0e6cf60bd0df3218"
             ]
         ]
     },
@@ -429,13 +376,745 @@
         "type": "postgresql",
         "z": "ac56580f02b26884",
         "name": "",
-        "query": "SELECT * FROM ;",
+        "query": "INSERT INTO PUBLIC.leds (status, usuario, dispositivo) VALUES ({{msg.payload.statusled}},'{{msg.payload.usuario}}','{{msg.payload.dispostivo}}');",
         "postgreSQLConfig": "5eac19d116ec3450",
         "split": true,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 710,
+        "x": 1090,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a356251d5ba40451",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "change led",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 180,
+        "wires": [
+            [
+                "7314c74e3e6c77d8"
+            ]
+        ]
+    },
+    {
+        "id": "7314c74e3e6c77d8",
+        "type": "function",
+        "z": "ac56580f02b26884",
+        "name": "Write DB",
+        "func": "var statusled = msg.payload;\nvar usuario = \"root\"\nvar dispositivo = msg.topic;\n\nmsg.payload={}\nmsg.payload.statusled = statusled;\nmsg.payload.usuario = usuario;\nmsg.payload.dispostivo = dispositivo;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 180,
+        "wires": [
+            [
+                "735aa36a205ecbca"
+            ]
+        ]
+    },
+    {
+        "id": "a05e0a62c607786e",
+        "type": "postgresql",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "query": "SELECT usuario, \nCASE status\n\tWHEN 0 THEN 'off'\n\tWHEN 1 THEN 'on'\n\tELSE ''\nEND AS status,\ndispositivo,\nTO_CHAR(horario, 'DD-MM-YYYY HH24:MI:SS')\nFROM leds\nWHERE dispositivo LIKE 'esp32%led%1'\nORDER BY id desc\nLIMIT 5",
+        "postgreSQLConfig": "5eac19d116ec3450",
+        "split": false,
+        "rowsPerMsg": "1",
+        "outputs": 1,
+        "x": 330,
         "y": 520,
+        "wires": [
+            [
+                "4cfd0b864e8ef3eb"
+            ]
+        ]
+    },
+    {
+        "id": "87397cebb6b02321",
+        "type": "comment",
+        "z": "ac56580f02b26884",
+        "name": "Le o sub do botao e armazena no banco",
+        "info": "",
+        "x": 780,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b24f107f75c731fa",
+        "type": "comment",
+        "z": "ac56580f02b26884",
+        "name": "Switch on,off",
+        "info": "",
+        "x": 330,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4cfd0b864e8ef3eb",
+        "type": "ui_table",
+        "z": "ac56580f02b26884",
+        "group": "cc27dbf9f196f53a",
+        "name": "ESP32 LED 1",
+        "order": 4,
+        "width": 10,
+        "height": 4,
+        "columns": [
+            {
+                "field": "usuario",
+                "title": "Usuário",
+                "width": "20%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "dispositivo",
+                "title": "Dispositivo",
+                "width": "30%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "status",
+                "title": "Status LED",
+                "width": "20%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "to_char",
+                "title": "Horario",
+                "width": "30%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 560,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "6fa5c2fea7ea7d9d",
+        "type": "mqtt in",
+        "z": "ac56580f02b26884",
+        "name": "IOT Sub New",
+        "topic": "esp32/led/#",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a3162002b2077c4a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 480,
+        "wires": [
+            [
+                "a05e0a62c607786e",
+                "c1a77885ed746825",
+                "945e5584869fd3f9"
+            ]
+        ]
+    },
+    {
+        "id": "6d8a0d3b086e6fba",
+        "type": "ui_audio",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "group": "ed0ae89afb1c029b",
+        "voice": "Microsoft Maria - Portuguese (Brazil)",
+        "always": "",
+        "x": 520,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "c1a77885ed746825",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "change led",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "Desligado",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "Ligado",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "945e5584869fd3f9",
+        "type": "postgresql",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "query": "SELECT usuario, \nCASE status\n\tWHEN 0 THEN 'off'\n\tWHEN 1 THEN 'on'\n\tELSE ''\nEND AS status,\ndispositivo,\nTO_CHAR(horario, 'DD-MM-YYYY HH24:MI:SS')\nFROM leds\nWHERE dispositivo LIKE 'esp32%led%2'\nORDER BY id desc\nLIMIT 5",
+        "postgreSQLConfig": "5eac19d116ec3450",
+        "split": false,
+        "rowsPerMsg": "1",
+        "outputs": 1,
+        "x": 330,
+        "y": 580,
+        "wires": [
+            [
+                "17075845a9742bbe"
+            ]
+        ]
+    },
+    {
+        "id": "17075845a9742bbe",
+        "type": "ui_table",
+        "z": "ac56580f02b26884",
+        "group": "cc27dbf9f196f53a",
+        "name": "ESP32 LED 2",
+        "order": 5,
+        "width": 10,
+        "height": 4,
+        "columns": [
+            {
+                "field": "usuario",
+                "title": "Usuário",
+                "width": "20%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "dispositivo",
+                "title": "Dispositivo",
+                "width": "30%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "status",
+                "title": "Status LED",
+                "width": "20%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "to_char",
+                "title": "Horario",
+                "width": "30%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 560,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "af5a53e846789f28",
+        "type": "postgresql",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "query": "SELECT status\nFROM leds\nWHERE dispositivo LIKE 'esp32%led%2'\nAND horario <= NOW()\nORDER BY id desc\nLIMIT 1",
+        "postgreSQLConfig": "5eac19d116ec3450",
+        "split": false,
+        "rowsPerMsg": "1",
+        "outputs": 1,
+        "x": 350,
+        "y": 400,
+        "wires": [
+            [
+                "12aad0d72b6041c4"
+            ]
+        ]
+    },
+    {
+        "id": "b9521158d808d9e9",
+        "type": "postgresql",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "query": "SELECT status\nFROM leds\nWHERE dispositivo LIKE 'esp32%led%1'\nAND horario <= NOW()\nORDER BY id desc\nLIMIT 1",
+        "postgreSQLConfig": "5eac19d116ec3450",
+        "split": false,
+        "rowsPerMsg": "1",
+        "outputs": 1,
+        "x": 350,
+        "y": 340,
+        "wires": [
+            [
+                "c74d6026fd67686f"
+            ]
+        ]
+    },
+    {
+        "id": "9fb9a491b9e433b8",
+        "type": "mqtt in",
+        "z": "ac56580f02b26884",
+        "name": "IOT Sub New",
+        "topic": "esp32/led/1",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a3162002b2077c4a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 340,
+        "wires": [
+            [
+                "b9521158d808d9e9"
+            ]
+        ]
+    },
+    {
+        "id": "999dee6ec658282e",
+        "type": "mqtt in",
+        "z": "ac56580f02b26884",
+        "name": "IOT Sub New",
+        "topic": "esp32/led/2",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a3162002b2077c4a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "af5a53e846789f28"
+            ]
+        ]
+    },
+    {
+        "id": "143e7d125ae3c83e",
+        "type": "ui_button",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "group": "59b87fe225053ad8",
+        "order": 2,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "{{msg.payload}}",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 750,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c91b754ce3a777c9",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "change led",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "#Be2528",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "#30be25",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "143e7d125ae3c83e"
+            ]
+        ]
+    },
+    {
+        "id": "6ef348753f02c332",
+        "type": "ui_button",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "group": "59b87fe225053ad8",
+        "order": 4,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "{{msg.payload}}",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 750,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa3a9bfbd98c4b39",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "change led",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "#Be2528",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "#30be25",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "6ef348753f02c332"
+            ]
+        ]
+    },
+    {
+        "id": "d332df2499113191",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "change led",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 340,
+        "wires": [
+            [
+                "7f7d85c20830a937"
+            ]
+        ]
+    },
+    {
+        "id": "98a8e5a146395f9d",
+        "type": "change",
+        "z": "ac56580f02b26884",
+        "name": "change led",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "off",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "on",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 400,
+        "wires": [
+            [
+                "d0a4d84bf7cac8a8"
+            ]
+        ]
+    },
+    {
+        "id": "c74d6026fd67686f",
+        "type": "function",
+        "z": "ac56580f02b26884",
+        "name": "Set payload",
+        "func": "msg.payload = msg.payload[0].status\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 340,
+        "wires": [
+            [
+                "d332df2499113191"
+            ]
+        ]
+    },
+    {
+        "id": "12aad0d72b6041c4",
+        "type": "function",
+        "z": "ac56580f02b26884",
+        "name": "Set payload",
+        "func": "msg.payload = msg.payload[0].status\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 400,
+        "wires": [
+            [
+                "98a8e5a146395f9d"
+            ]
+        ]
+    },
+    {
+        "id": "7f7d85c20830a937",
+        "type": "ui_chart",
+        "z": "ac56580f02b26884",
+        "name": "Status ESP32 LED 1",
+        "group": "cc27dbf9f196f53a",
+        "order": 1,
+        "width": "10",
+        "height": "5",
+        "label": "Status ESP32 LED 1",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "step",
+        "nodata": "Sem dados",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1100,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0a4d84bf7cac8a8",
+        "type": "ui_chart",
+        "z": "ac56580f02b26884",
+        "name": "Status ESP32 LED 2",
+        "group": "cc27dbf9f196f53a",
+        "order": 2,
+        "width": "10",
+        "height": "5",
+        "label": "Status ESP32 LED 2",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "step",
+        "nodata": "Sem dados",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1100,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a30fb5ca48580e68",
+        "type": "ui_button",
+        "z": "ac56580f02b26884",
+        "name": "",
+        "group": "cc27dbf9f196f53a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "0 - Desligado | 1 - Ligado",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 810,
+        "y": 560,
         "wires": [
             []
         ]
